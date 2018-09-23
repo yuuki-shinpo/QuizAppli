@@ -13,6 +13,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -28,6 +30,8 @@ public class QuestionActivity extends AppCompatActivity {
     int Kaitousuu=1;
     //ユーザがどの問題を選んだかをテーブル名で判断
     String SelectQuestionTable;
+    //問題を解答した順番を格納
+    int[] list=new int[9];
 
     String QuestionNo;
     int randomQuestionNo;
@@ -156,6 +160,10 @@ public class QuestionActivity extends AppCompatActivity {
         //データベースと接続
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        list[Kaitousuu-1]=Integer.parseInt(QuestionNo);
+
+
         //押されたボタンのテキストと正解を比較
         if (((Button) v).getText().equals(ANSWER)) {
             //正解の処理 正解音再生
@@ -197,7 +205,11 @@ public class QuestionActivity extends AppCompatActivity {
         }
         else{//既定の回数出し終わったとき 結果画面へ遷移
             Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
+            //アクティビティ間で値を受け渡す処理
+            intent.putExtra("Question",SelectQuestionTable);
+            intent.putExtra("LIST",list);
             startActivity(intent);
+            finish();
         }
     }
 
