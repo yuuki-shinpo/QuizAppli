@@ -61,10 +61,6 @@ public class QuestionActivity extends AppCompatActivity {
         mSoundId[0] = mSoundPool.load(getApplicationContext(), R.raw.se_seikai, 1);
         mSoundId[1] = mSoundPool.load(getApplicationContext(), R.raw.se_huseikai, 1);
 
-
-        //画面↑にあるテキストを「クイズNo,+問題Noで表示」
-        //((TextView) findViewById(R.id.textNo)).setText("クイズNo." + QuestionNo+"だよ！");
-
         //問題文セット処理呼び出し
         setQuestion();
     }
@@ -78,9 +74,8 @@ public class QuestionActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        //SELECT文　テーブル名　TABLE_FEから　_idとQuestionNoがマッチする項目を取得する条件式
-        //String sql = "SELECT Pref ,City0,City1,City2,City3,City4 FROM TABLE_FE WHERE _id" + QuestionNo;
-        String sql = "SELECT QUESTION, ANSWER, CHOICE1, CHOICE2, CHOICE3, CHOICE4 , AFLG, DFLG FROM TABLE_FE WHERE _id=" + QuestionNo;
+        //SELECT文　テーブル名から　_idとQuestionNoがマッチする項目を取得する条件式
+        String sql = "SELECT QUESTION, ANSWER, CHOICE1, CHOICE2, CHOICE3, CHOICE4 , AFLG, DFLG FROM "+SelectQuestionTable+" WHERE _id=" + QuestionNo;
 
         //SQL文を実行してカーソルを取得
         Cursor c = db.rawQuery(sql, null);
@@ -134,9 +129,8 @@ public class QuestionActivity extends AppCompatActivity {
         do {
             //問題をランダムで選定するため、乱数を生成
             randomQuestionNo = rand.nextInt(allQuestion);
-            //SELECT文　テーブル名　TABLE_FEから　_idと生成した乱数がマッチする項目を取得する条件式
-            //String sql = "SELECT Pref ,City0,City1,City2,City3,City4 FROM TABLE_FE WHERE _id" + QuestionNo;
-            String sql = "SELECT DFLG FROM TABLE_FE WHERE _id=" + (Integer.toString(randomQuestionNo));
+            //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
+            String sql = "SELECT DFLG FROM"+SelectQuestionTable+"WHERE _id=" + (Integer.toString(randomQuestionNo));
 
             //SQL文を実行してカーソルを取得
             Cursor c = db.rawQuery(sql, null);
@@ -177,7 +171,7 @@ public class QuestionActivity extends AppCompatActivity {
             //データベース更新
             int ret;
             try {
-                ret = db.update("TABLE_FE", values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
+                ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
             } finally {
                 db.close();
             }
