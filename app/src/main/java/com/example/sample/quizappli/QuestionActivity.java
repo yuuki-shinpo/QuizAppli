@@ -197,6 +197,8 @@ public class QuestionActivity extends AppCompatActivity {
         }
         else{//既定の回数出し終わったとき 結果画面へ遷移
             Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
+            //アクティビティ間で値を受け渡す処理
+            intent.putExtra("Question",SelectQuestionTable);
             startActivity(intent);
         }
     }
