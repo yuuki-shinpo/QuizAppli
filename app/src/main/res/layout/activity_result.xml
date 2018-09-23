@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultActivity">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/title_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_result" />
+
+    <TextView
+        android:id="@+id/TV_correctNum_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/TV_correctPer_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <Button
+        android:id="@+id/button_correctSample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/correctSample_view"
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/button_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/top_view"
+        android:onClick="onClick"/>
+</LinearLayout>
