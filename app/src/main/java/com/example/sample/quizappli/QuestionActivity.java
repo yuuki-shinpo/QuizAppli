@@ -26,7 +26,7 @@ public class QuestionActivity extends AppCompatActivity {
     int Shutudaisuu=10;
     //問題の解答回数
     int Kaitousuu=1;
-    //ユーザがどの問題を選んだか
+    //ユーザがどの問題を選んだかをテーブル名で判断
     String SelectQuestionTable;
 
     String QuestionNo;
