@@ -74,6 +74,7 @@ public class QuestionActivity extends AppCompatActivity {
      * 問題文セット処理
      */
     protected void setQuestion() {
+
         //作成したDatabaseHelperクラスに読み取り専用でアクセス
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -122,13 +123,11 @@ public class QuestionActivity extends AppCompatActivity {
      */
     public int getRandomQuestionNo(){
 
-        Random rand =new Random();
-
-        String DFLG;
-
         //作成したDatabaseHelperクラスに読み取り専用でアクセス
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Random rand =new Random();
+        String DFLG;
 
         do {
             //問題をランダムで選定するため、乱数を生成
@@ -157,12 +156,10 @@ public class QuestionActivity extends AppCompatActivity {
     //選択肢がクリックされた時の処理
     public void onClick(View v) {
 
-        //データベースと接続
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         list[Kaitousuu-1]=Integer.parseInt(QuestionNo);
-
+        //作成したDatabaseHelperクラスに読み取り専用でアクセス
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         //押されたボタンのテキストと正解を比較
         if (((Button) v).getText().equals(ANSWER)) {
@@ -181,14 +178,9 @@ public class QuestionActivity extends AppCompatActivity {
             try {
                 ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
             } finally {
-                db.close();
+               db.close();
             }
 
-            if (ret == -1) {
-                //処理未実装
-            } else {
-                //処理未実装
-            }
 
         } else {
             //不正解の処理
@@ -209,6 +201,7 @@ public class QuestionActivity extends AppCompatActivity {
             intent.putExtra("Question",SelectQuestionTable);
             intent.putExtra("LIST",list);
             startActivity(intent);
+            //db.close();
             finish();
         }
     }
