@@ -53,8 +53,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ", CHOICE2  TEXT" +   //選択肢②
                 ", CHOICE3  TEXT" +   //選択肢③
                 ", CHOICE4  TEXT" +   //選択肢④
-                ", FLG1  INTEGER" +   //正解・不正解フラグ
-                ", FLG2  INTEGER" +   //解答済みフラグ
+                ", AFLG  INTEGER" +   //正解・不正解フラグ
+                ", DFLG  INTEGER" +   //解答済みフラグ
                 ", KAISETU  TEXT" +   //解説
                 ")");
 

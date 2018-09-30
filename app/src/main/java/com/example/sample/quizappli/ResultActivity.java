@@ -67,7 +67,7 @@ public class ResultActivity extends AppCompatActivity {
             break;
 
             case R.id.button_top:
-                intent = new Intent(ResultActivity.this,MainActivity.class);
+                finish();
             break;
         }
 
