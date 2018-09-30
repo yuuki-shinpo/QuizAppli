@@ -133,7 +133,7 @@ public class QuestionActivity extends AppCompatActivity {
             //問題をランダムで選定するため、乱数を生成
             randomQuestionNo = rand.nextInt(allQuestion);
             //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
-            String sql = "SELECT DFLG FROM"+SelectQuestionTable+"WHERE _id=" + (Integer.toString(randomQuestionNo));
+            String sql = "SELECT DFLG FROM "+SelectQuestionTable+" WHERE _id=" + (Integer.toString(randomQuestionNo));
 
             //SQL文を実行してカーソルを取得
             Cursor c = db.rawQuery(sql, null);
