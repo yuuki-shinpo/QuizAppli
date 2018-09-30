@@ -38,7 +38,7 @@ public class CorrectSampleActivity extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
         //解説を取得
         for (int id : idOrder) {
-            String sql = "SELECT TEXT FROM " + tableName + " WHERE _id = " + id;
+            String sql = "SELECT KAISETU FROM " + tableName + " WHERE _id = " + id;
 
             //SQL実行
             Cursor cursor = db.rawQuery(sql, null);
@@ -72,7 +72,7 @@ public class CorrectSampleActivity extends AppCompatActivity {
                 break;
 
             case R.id.button_top:
-                intent = new Intent(CorrectSampleActivity.this,MainActivity.class);
+                finish();
                 break;
         }
 
