@@ -31,7 +31,7 @@ public class ResultActivity extends AppCompatActivity {
 
         //正解数をDBから取得する
         try {
-            String sql = "SELECT COUNT(*) as correct_sum FROM" + tableName + "  where AFLG = 1";
+            String sql = "SELECT COUNT(*) as correct_sum FROM　" + tableName + "  where AFLG = 1";
 
             Cursor cursor = db.rawQuery(sql, null);
 
