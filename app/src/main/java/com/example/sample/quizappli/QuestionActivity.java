@@ -106,10 +106,10 @@ public class QuestionActivity extends AppCompatActivity {
         //画面↑にあるテキストを「クイズNo,+問題Noで表示」
         ((TextView) findViewById(R.id.textNo)).setText("クイズNo." + Kaitousuu);
         ((TextView) findViewById(R.id.textQuestion)).setText(QUESTION);//問題文をテキストビューにセット
-        ((TextView) findViewById(R.id.button1)).setText(CHOICE1);//選択肢1をボタンビューにセット
-        ((TextView) findViewById(R.id.button2)).setText(CHOICE2);//選択肢2をボタンビューにセット
-        ((TextView) findViewById(R.id.button3)).setText(CHOICE3);//選択肢3をボタンビューにセット
-        ((TextView) findViewById(R.id.button4)).setText(CHOICE4);//選択肢4をボタンビューにセット
+        ((TextView) findViewById(R.id.A)).setText(CHOICE1);//選択肢1をボタンビューにセット
+        ((TextView) findViewById(R.id.B)).setText(CHOICE2);//選択肢2をボタンビューにセット
+        ((TextView) findViewById(R.id.C)).setText(CHOICE3);//選択肢3をボタンビューにセット
+        ((TextView) findViewById(R.id.D)).setText(CHOICE4);//選択肢4をボタンビューにセット
         QuestionNo = Integer.toString(nextQuestionNo());//次の問題の問題番号取得
     }
 
@@ -126,14 +126,8 @@ public class QuestionActivity extends AppCompatActivity {
      */
     public int getRandomQuestionNo() {
 
-        //作成したDatabaseHelperクラスに読み取り+書き取りでアクセス　
-        //DatabaseHelper dbHelper = new DatabaseHelper(this);
-        //SQLiteDatabase db = dbHelper.getReadableDatabase();
-        //db=dbHelper.getWritableDatabase();
-
         Random rand = new Random();
-        String DFLG;
-        int bound=allQuestion+1;
+        int bound = allQuestion + 1;
         do {
             do {
                 //問題をランダムで選定するため、乱数を生成
@@ -142,46 +136,10 @@ public class QuestionActivity extends AppCompatActivity {
         } while (list[randomQuestionNo] == 1);//DFLG=重複フラグが1の場合、違う問題を選ぶ
 
         return randomQuestionNo;
-
-//        do {
-//            //問題をランダムで選定するため、乱数を生成
-//            randomQuestionNo = rand.nextInt(allQuestion);
-//            //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
-//            //String sql = "SELECT DFLG FROM "+SelectQuestionTable+" WHERE _id=" + (Integer.toString(randomQuestionNo));
-//            String sql = "SELECT DFLG FROM "+SelectQuestionTable+" WHERE _id=" + randomQuestionNo;
-//
-//            //SQL文を実行してカーソルを取得
-//            Cursor c = db.rawQuery(sql, null);
-//            c.moveToFirst();
-//
-//            //データベースからとってきたデータを変数にセット
-//            DFLG = c.getString(c.getColumnIndex("DFLG"));//問題文となる都道府県
-//
-//            c.close();
-//        }while (DFLG.equals("1")); //DFLG=重複フラグが1の場合、違う問題を選ぶ
-//
-//        //使用済みでない場合、今回選出されたためフラグを使用済みにする
-//        //データベースを更新処理
-//        ContentValues values = new ContentValues();
-//        //使用済みフラグ 0→１　に書き換え、正解の状態にする
-//        values.put("DFLG", 1);
-//
-//        //カラム選択
-//        String whereClause = "_id = ?";
-//
-//        //データベース更新
-//        int ret;
-//        try {
-//            ret = db.update(SelectQuestionTable, values, whereClause, new String[]{String.valueOf((randomQuestionNo))});
-//        } finally {
-//            //   db.close();
-//        }
-
     }
 
     //選択肢がクリックされた時の処理
     public void onClick(View v) {
-        //QuestionNo=Integer.toString(nextQuestionNo());//次の問題の問題番号取得
         //解答済みフラグを1にする
         list[Integer.parseInt(QuestionNo)] = 1;
         //作成したDatabaseHelperクラスに読み取り専用でアクセス
@@ -195,28 +153,9 @@ public class QuestionActivity extends AppCompatActivity {
 
             //正解リストのフラグを1にする
             listAFLG[Integer.parseInt(QuestionNo)] = 1;
-
-
-//            //データベースを更新処理
-//            ContentValues values = new ContentValues();
-//            //AFLG 0→１　に書き換え、正解の状態にする
-//            values.put("AFLG", 1);
-//            //カラム選択
-//            String whereClause = "_id = ?";
-//
-//            //データベース更新
-//            int ret;
-//            try {
-//                ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
-//            } finally {
-//               db.close();
-//            }
-
-
         } else {
             //不正解の処理
             mSoundPool.play(mSoundId[1], 1.0f, 1.0f, 0, 0, 1.0f);
-
         }
 
 
@@ -234,8 +173,6 @@ public class QuestionActivity extends AppCompatActivity {
             //アクティビティ間で値を受け渡す処理
             intent.putExtra("Question", SelectQuestionTable);
             startActivity(intent);
-            //db.close();
-            //finish();
         }
     }
 
@@ -263,9 +200,8 @@ public class QuestionActivity extends AppCompatActivity {
                 //データベース更新
                 int ret;
                 try {
-                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
+                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf(i)});
                 } finally {
-//                    db.close();
                 }
 
             }
@@ -298,9 +234,9 @@ public class QuestionActivity extends AppCompatActivity {
                 //データベース更新
                 int ret;
                 try {
-                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
+                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf(i)});
+//                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
                 } finally {
-//                    db.close();
                 }
 
             }

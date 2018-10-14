@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button1"
+            android:id="@+id/A"
             android:textSize="26dp"
             android:onClick="onClick"
             />
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button2"
+            android:id="@+id/B"
             android:textSize="26dp"
             android:onClick="onClick"
             />
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button3"
+            android:id="@+id/C"
             android:textSize="26dp"
             android:onClick="onClick"
             />
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Button"
-            android:id="@+id/button4"
+            android:id="@+id/D"
             android:textSize="26dp"
             android:onClick="onClick"
             />

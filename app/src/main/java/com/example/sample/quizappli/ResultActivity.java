@@ -51,7 +51,7 @@ public class ResultActivity extends AppCompatActivity {
 
             //正答率計算しtextViewにセット
             TextView tvCorrectPer = findViewById(R.id.TV_correctPer_id);
-            String str_correctPer ="正解率 : "+String.valueOf(correctNum/Shutudaisuu*100)+ "%";
+            String str_correctPer ="正解率 : "+String.valueOf(correctNum*100/Shutudaisuu)+ "%";
                     tvCorrectPer.setText(str_correctPer);
         }finally {
             db.close();
