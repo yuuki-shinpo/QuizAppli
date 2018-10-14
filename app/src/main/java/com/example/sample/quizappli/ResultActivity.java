@@ -10,13 +10,14 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
-    Intent intent = getIntent();
-    String tableName = intent.getStringExtra("Question");
 
+    String tableName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        Intent intent = getIntent();
+        tableName = intent.getStringExtra("Question");
 
 
         //出題数
@@ -31,7 +32,8 @@ public class ResultActivity extends AppCompatActivity {
 
         //正解数をDBから取得する
         try {
-            String sql = "SELECT COUNT(*) as correct_sum FROM　" + tableName + "  where AFLG = 1";
+            String sql = "SELECT COUNT(*) as correct_sum FROM " + tableName + " WHERE AFLG = 1";
+            //String sql = "SELECT COUNT(*)  FROM　" + tableName + "  WHERE AFLG = 1";
 
             Cursor cursor = db.rawQuery(sql, null);
 
