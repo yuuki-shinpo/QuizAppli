@@ -66,14 +66,15 @@ public class ResultActivity extends AppCompatActivity {
             case R.id.button_correctSample:
                 intent = new Intent(ResultActivity.this,CorrectSampleActivity.class);
                 intent.putExtra("Question",tableName);
-            break;
+                startActivity(intent);
+
+                break;
 
             case R.id.button_top:
                 finish();
             break;
         }
 
-        startActivity(intent);
     }
 }
 
