@@ -11,13 +11,20 @@ import android.widget.TextView;
 public class ResultActivity extends AppCompatActivity {
 
 
+    //問題ステージ
     String tableName;
+    //解説順のid配列を取得
+    int[] idOrder ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         Intent intent = getIntent();
+        //問題ステージ取得
         tableName = intent.getStringExtra("Question");
+        //解説順のid配列を取得
+        idOrder = intent.getIntArrayExtra("LIST");
 
 
         //出題数
@@ -66,8 +73,8 @@ public class ResultActivity extends AppCompatActivity {
             case R.id.button_correctSample:
                 intent = new Intent(ResultActivity.this,CorrectSampleActivity.class);
                 intent.putExtra("Question",tableName);
+                intent.putExtra("LIST",idOrder);
                 startActivity(intent);
-
                 break;
 
             case R.id.button_top:
