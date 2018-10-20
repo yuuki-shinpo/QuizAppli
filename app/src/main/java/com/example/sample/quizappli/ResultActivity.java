@@ -24,7 +24,7 @@ public class ResultActivity extends AppCompatActivity {
         //問題ステージ取得
         tableName = intent.getStringExtra("Question");
         //解説順のid配列を取得
-        idOrder = intent.getIntArrayExtra("LIST");
+        idOrder = intent.getIntArrayExtra("answerOrder");
 
 
         //出題数
@@ -73,7 +73,7 @@ public class ResultActivity extends AppCompatActivity {
             case R.id.button_correctSample:
                 intent = new Intent(ResultActivity.this,CorrectSampleActivity.class);
                 intent.putExtra("Question",tableName);
-                intent.putExtra("LIST",idOrder);
+                intent.putExtra("answerOrder",idOrder);
                 startActivity(intent);
                 break;
 

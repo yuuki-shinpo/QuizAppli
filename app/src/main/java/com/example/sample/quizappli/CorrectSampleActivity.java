@@ -22,7 +22,7 @@ public class CorrectSampleActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tableName = intent.getStringExtra("Question");
         //解説順のid配列を取得
-        int[] idOrder = intent.getIntArrayExtra("LIST");
+        int[] idOrder = intent.getIntArrayExtra("answerOrder");
 
         //DB取得
         DatabaseHelper helper = new DatabaseHelper(CorrectSampleActivity.this);

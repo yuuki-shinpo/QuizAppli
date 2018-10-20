@@ -34,6 +34,8 @@ public class QuestionActivity extends AppCompatActivity {
     int[] list = new int[11];
     //問題を正解した順番を格納
     int[] listAFLG = new int[11];
+    //解答した順番を格納し、次のactivityに渡す
+    int[] answerOrder = new int[11];
 
     String QuestionNo;
     int randomQuestionNo;
@@ -110,6 +112,8 @@ public class QuestionActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.B)).setText(CHOICE2);//選択肢2をボタンビューにセット
         ((TextView) findViewById(R.id.C)).setText(CHOICE3);//選択肢3をボタンビューにセット
         ((TextView) findViewById(R.id.D)).setText(CHOICE4);//選択肢4をボタンビューにセット
+
+        answerOrder[Kaitousuu]=Integer.parseInt(QuestionNo);
         QuestionNo = Integer.toString(nextQuestionNo());//次の問題の問題番号取得
     }
 
@@ -134,6 +138,7 @@ public class QuestionActivity extends AppCompatActivity {
                 randomQuestionNo = rand.nextInt(bound);
             } while (randomQuestionNo == 0);
         } while (list[randomQuestionNo] == 1);//DFLG=重複フラグが1の場合、違う問題を選ぶ
+
 
         return randomQuestionNo;
     }
@@ -172,6 +177,7 @@ public class QuestionActivity extends AppCompatActivity {
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
             //アクティビティ間で値を受け渡す処理
             intent.putExtra("Question", SelectQuestionTable);
+            intent.putExtra("answerOrder", answerOrder);
             startActivity(intent);
         }
     }
