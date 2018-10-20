@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class CorrectSampleActivity extends AppCompatActivity {
 
-    String tableName = null;
+    String tableName ;
+    int[] idOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,9 @@ public class CorrectSampleActivity extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
         //解説を取得
-        for (int id : idOrder) {
-            String sql = "SELECT KAISETU FROM " + tableName + " WHERE _id = " + id;
+        for (int id = 1 ; id < 11; id++) {
+
+            String sql = "SELECT KAISETU FROM " + tableName + " WHERE _id = " + idOrder[id];
 
             //SQL実行
             Cursor cursor = db.rawQuery(sql, null);
@@ -69,14 +71,14 @@ public class CorrectSampleActivity extends AppCompatActivity {
             case R.id.button_result:
                 intent = new Intent(CorrectSampleActivity.this,ResultActivity.class);
                 intent.putExtra("Question", tableName);
+                intent.putExtra("answerOrder",idOrder);
+                startActivity(intent);
                 break;
 
             case R.id.button_top:
                 finish();
                 break;
         }
-
-        startActivity(intent);
     }
 
 
