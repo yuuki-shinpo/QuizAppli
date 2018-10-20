@@ -47,18 +47,19 @@ public class CorrectSampleActivity extends AppCompatActivity {
 
             //データ取得
             while (cursor.moveToNext()) {
-                int indexColumn = cursor.getColumnIndex("TEXT");
+                int indexColumn = cursor.getColumnIndex("KAISETU");
                 sb.append("問題");
-                sb.append(count+1);
+                count++;
+                sb.append(count);
                 sb.append(": ");
                 sb.append(cursor.getString(indexColumn));
                 text = new String(sb);
             }
 
+
             TextView textView = findViewById(R.id.text + count);
             textView.setText(text);
 
-            count++;
         }
 
     }

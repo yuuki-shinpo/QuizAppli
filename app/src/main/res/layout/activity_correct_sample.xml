@@ -6,24 +6,17 @@
 
 
     <TextView
-        android:id="@+id/text0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
         android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" 
+        android:text=""
         android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="" 
         android:textSize="25sp"/>
 
     <TextView
@@ -38,14 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/text5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="25sp"/>
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/text6"
@@ -70,6 +63,13 @@
 
     <TextView
         android:id="@+id/text9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/text10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
