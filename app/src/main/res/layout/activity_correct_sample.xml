@@ -10,70 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="25sp"/>
+        android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/text2"
+    <Button
+        android:id="@+id/button_nextkaisetu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" 
-        android:textSize="25sp"/>
+        android:text="次の解説文を表示する"
+        android:onClick="onClick"/>
 
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
 
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp" />
-
-    <TextView
-        android:id="@+id/text6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/text7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/text8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/text9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
-
-    <TextView
-        android:id="@+id/text10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25sp"/>
 
     <Button
         android:id="@+id/button_result"

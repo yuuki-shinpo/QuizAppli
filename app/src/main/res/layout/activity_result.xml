@@ -10,27 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title_result"
-        android:textSize="25sp"/>
+        android:textSize="45sp"/>
 
     <TextView
         android:id="@+id/TV_correctNum_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="25sp"/>
+        android:textSize="35sp"/>
 
     <TextView
         android:id="@+id/TV_correctPer_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="25sp"/>
+        android:textSize="35sp"/>
 
     <Button
         android:id="@+id/button_correctSample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/correctSample_view"
+        android:textSize="35sp"
         android:onClick="onClick"/>
 
     <Button
@@ -38,5 +39,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/top_view"
+        android:textSize="35sp"
         android:onClick="onClick"/>
 </LinearLayout>
