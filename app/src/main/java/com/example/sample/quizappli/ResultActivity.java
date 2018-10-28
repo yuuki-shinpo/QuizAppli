@@ -1,5 +1,6 @@
 package com.example.sample.quizappli;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,9 @@ public class ResultActivity extends AppCompatActivity {
     String tableName;
     //解説順のid配列を取得
     int[] idOrder ;
+    //出題数
+    int Shutudaisuu=10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +29,6 @@ public class ResultActivity extends AppCompatActivity {
         tableName = intent.getStringExtra("Question");
         //解説順のid配列を取得
         idOrder = intent.getIntArrayExtra("answerOrder");
-
-
-        //出題数
-        int Shutudaisuu=10;
 
         //正解数
         int correctNum=0;
@@ -75,13 +75,81 @@ public class ResultActivity extends AppCompatActivity {
                 intent.putExtra("Question",tableName);
                 intent.putExtra("answerOrder",idOrder);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.button_top:
+                //フラグ初期化
+                setListAFLG();
+                setlistDFLG();
                 finish();
             break;
         }
 
     }
+
+
+
+    /**
+     *すべてのAFLGを0に書き換える
+     */
+    public void setListAFLG() {
+        //作成したDatabaseHelperクラスに読み取り+書き取りでアクセス　
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 1; i <= Shutudaisuu; i++) {
+                //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
+                String sql = "SELECT AFLG FROM " + tableName + " WHERE _id=" + i;
+                //    データベースを更新処理
+                ContentValues values = new ContentValues();
+                //AFLG 0→１　に書き換え、正解の状態にする
+                values.put("AFLG", 0);
+                //カラム選択
+                String whereClause = "_id = ?";
+
+                //データベース更新
+                int ret;
+                try {
+                    ret = db.update(tableName, values, whereClause, new String[]{String.valueOf(i)});
+                } finally {
+                }
+
+        }
+        db.close();
+    }
+
+
+    /**
+     * すべてのAFLGを0に書き換える
+     */
+    public void setlistDFLG() {
+        //作成したDatabaseHelperクラスに読み取り+書き取りでアクセス　
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 1; i <= Shutudaisuu; i++) {
+
+                //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
+                String sql = "SELECT DFLG FROM " + tableName + " WHERE _id=" + i;
+                //    データベースを更新処理
+                ContentValues values = new ContentValues();
+                //AFLG 0→１　に書き換え、正解の状態にする
+                values.put("DFLG", 0);
+                //カラム選択
+                String whereClause = "_id = ?";
+
+                //データベース更新
+                int ret;
+                try {
+                    ret = db.update(tableName, values, whereClause, new String[]{String.valueOf(i)});
+                } finally {
+
+            }
+        }
+        db.close();
+    }
+
+
 }
 

@@ -1,5 +1,6 @@
 package com.example.sample.quizappli;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,8 @@ public class CorrectSampleActivity extends AppCompatActivity {
     //count初期化
     int count = 0;
     int idnumber = 1;
+    //出題数
+    int Shutudaisuu = 10;
 
     //解説文の初期化
     String[] text = new String[11];
@@ -34,7 +37,6 @@ public class CorrectSampleActivity extends AppCompatActivity {
         //DB取得
         DatabaseHelper helper = new DatabaseHelper(CorrectSampleActivity.this);
         SQLiteDatabase db = helper.getReadableDatabase();
-
 
 
         //解説を取得
@@ -78,9 +80,10 @@ public class CorrectSampleActivity extends AppCompatActivity {
                 break;
 
             case R.id.button_top:
-
-                finish();
                 //AFLG,DFLGの初期化処理を行う
+                setListAFLG();
+                setlistDFLG();
+                finish();
                 break;
         }
     }
@@ -94,6 +97,69 @@ public class CorrectSampleActivity extends AppCompatActivity {
         textView.setText(text[idnumber]);
         idnumber++;
     }
+
+
+    /**
+     * すべてのAFLGを0に書き換える
+     */
+    public void setListAFLG() {
+        //作成したDatabaseHelperクラスに読み取り+書き取りでアクセス　
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 1; i <= Shutudaisuu; i++) {
+            //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
+            String sql = "SELECT AFLG FROM " + tableName + " WHERE _id=" + i;
+            //    データベースを更新処理
+            ContentValues values = new ContentValues();
+            //AFLG 0→１　に書き換え、正解の状態にする
+            values.put("AFLG", 0);
+            //カラム選択
+            String whereClause = "_id = ?";
+
+            //データベース更新
+            int ret;
+            try {
+                ret = db.update(tableName, values, whereClause, new String[]{String.valueOf(i)});
+            } finally {
+            }
+
+        }
+        db.close();
+    }
+
+
+    /**
+     * すべてのAFLGを0に書き換える
+     */
+    public void setlistDFLG() {
+        //作成したDatabaseHelperクラスに読み取り+書き取りでアクセス　
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 1; i <= Shutudaisuu; i++) {
+
+            //SELECT文　テーブル名から　_idと生成した乱数がマッチする項目を取得する
+            String sql = "SELECT DFLG FROM " + tableName + " WHERE _id=" + i;
+            //    データベースを更新処理
+            ContentValues values = new ContentValues();
+            //AFLG 0→１　に書き換え、正解の状態にする
+            values.put("DFLG", 0);
+            //カラム選択
+            String whereClause = "_id = ?";
+
+            //データベース更新
+            int ret;
+            try {
+                ret = db.update(tableName, values, whereClause, new String[]{String.valueOf(i)});
+            } finally {
+
+            }
+        }
+        db.close();
+    }
+
+
 }
 
 

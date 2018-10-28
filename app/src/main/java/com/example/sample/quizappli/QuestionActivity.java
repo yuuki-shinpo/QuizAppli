@@ -169,7 +169,7 @@ public class QuestionActivity extends AppCompatActivity {
         if (Kaitousuu <= Shutudaisuu) {//出題数が既定の数へ達していない場合
             setQuestion();
         } else {
-            //DFLG、AFLGをそれぞれのlistに従い、書き換える
+            //DFLG、AFLGをそれぞれのlistに従い、DBを書き換える
             setlist();
             setListAFLG();
 
@@ -179,6 +179,7 @@ public class QuestionActivity extends AppCompatActivity {
             intent.putExtra("Question", SelectQuestionTable);
             intent.putExtra("answerOrder", answerOrder);
             startActivity(intent);
+            finish();
         }
     }
 
