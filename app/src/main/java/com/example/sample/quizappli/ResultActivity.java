@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
@@ -23,6 +24,10 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //タイトルバーを非表示にする。setContentViewの前でないとエラー起きる場合あり
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
         setContentView(R.layout.activity_result);
         Intent intent = getIntent();
         //問題ステージ取得
@@ -80,6 +85,7 @@ public class ResultActivity extends AppCompatActivity {
 
             case R.id.button_top:
                 //フラグ初期化
+
                 setListAFLG();
                 setlistDFLG();
                 finish();
