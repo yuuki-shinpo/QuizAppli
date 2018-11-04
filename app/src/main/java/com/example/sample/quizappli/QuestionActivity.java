@@ -56,8 +56,11 @@ public class QuestionActivity extends AppCompatActivity {
         //ステージセレクトActivityから送られてきたデータを取得 受け取るデータは選択した問題のテーブル名　これをもとに、どの問題を出題するかを決める
         Intent intent = getIntent();
         SelectQuestionTable = intent.getStringExtra("Question");
-        QuestionNo = Integer.toString(getRandomQuestionNo());
-        //問題文セット処理呼び出し
+       // QuestionNo = Integer.toString(getRandomQuestionNo());
+        QuestionNo = Integer.toString(nextQuestionNo());
+
+        //解答済みフラグを1にする                          
+        list[Integer.parseInt(QuestionNo)] = 1; //問題文セット処理呼び出し
         setQuestion();
     }
 
