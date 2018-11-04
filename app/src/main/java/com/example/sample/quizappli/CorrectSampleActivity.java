@@ -104,6 +104,8 @@ public class CorrectSampleActivity extends AppCompatActivity {
         Button kaisetu_btn = findViewById(R.id.button_nextkaisetu);
         if (idnumber >= Shutudaisuu) {
             kaisetu_btn.setEnabled(false);
+            kaisetu_btn.setTextColor(0xffffffff);//テキストの色
+            kaisetu_btn.setBackgroundColor(0xffB7B7B7);//ボタンの色
         }
         idnumber++;
     }

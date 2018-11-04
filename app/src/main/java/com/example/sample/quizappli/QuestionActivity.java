@@ -114,6 +114,10 @@ public class QuestionActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.D)).setText(CHOICE4);//選択肢4をボタンビューにセット
 
         answerOrder[Kaitousuu]=Integer.parseInt(QuestionNo);
+
+        //解答済みフラグを1にする
+        //list[Integer.parseInt(QuestionNo)] = 1;
+
         QuestionNo = Integer.toString(nextQuestionNo());//次の問題の問題番号取得
     }
 
@@ -139,14 +143,17 @@ public class QuestionActivity extends AppCompatActivity {
             } while (randomQuestionNo == 0);
         } while (list[randomQuestionNo] == 1);//DFLG=重複フラグが1の場合、違う問題を選ぶ
 
-
+        //解答済みフラグを1にする
+        //list[randomQuestionNo] = 1;
         return randomQuestionNo;
     }
 
     //選択肢がクリックされた時の処理
     public void onClick(View v) {
+
         //解答済みフラグを1にする
         list[Integer.parseInt(QuestionNo)] = 1;
+
         //作成したDatabaseHelperクラスに読み取り専用でアクセス
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -245,7 +252,6 @@ public class QuestionActivity extends AppCompatActivity {
 //                    ret = db.update(/*table名*/SelectQuestionTable, values, whereClause, new String[]{String.valueOf((Integer.parseInt(QuestionNo)))});
                 } finally {
                 }
-
             }
         }
         db.close();

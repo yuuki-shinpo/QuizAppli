@@ -8,23 +8,36 @@
     <TextView
         android:id="@+id/text1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:text=""
-        android:textSize="20sp"/>
+        android:textSize="23sp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left|center_vertical"
+        >
 
     <Button
         android:id="@+id/button_nextkaisetu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_weight="1"
+        android:background="#000080"
+        android:textColor="#FFFFFF"
         android:text="次の解説文を表示する"
         android:onClick="onClick"/>
-
-
 
     <Button
         android:id="@+id/button_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_weight="1"
+        android:background="#ffa500"
+        android:textColor="#FFFFFF"
         android:text="@string/result_view"
         android:onClick="onClick"/>
 
@@ -32,8 +45,14 @@
         android:id="@+id/button_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_weight="1"
+        android:background="#00bfff"
+        android:textColor="#FFFFFF"
         android:text="@string/top_view"
         android:onClick="onClick"/>
+
+    </LinearLayout>
 
 
 </LinearLayout>
