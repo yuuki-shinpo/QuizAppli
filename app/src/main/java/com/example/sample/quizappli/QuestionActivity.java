@@ -27,7 +27,7 @@ public class QuestionActivity extends AppCompatActivity {
     //出題数
     int Shutudaisuu = 10;
     //問題の解答回数
-    int Kaitousuu = 1;
+    int Kaitousuu = 0;
     //ユーザがどの問題を選んだかをテーブル名で判断
     String SelectQuestionTable;
     //問題をすでに解答したかどうかを判別
@@ -120,8 +120,11 @@ public class QuestionActivity extends AppCompatActivity {
 
         //解答済みフラグを1にする
         //list[Integer.parseInt(QuestionNo)] = 1;
-
-        QuestionNo = Integer.toString(nextQuestionNo());//次の問題の問題番号取得
+        if(Kaitousuu<10) {
+            QuestionNo = Integer.toString(nextQuestionNo());//次の問題の問題番号取得
+        }else{
+        Kaitousuu++;
+        }
     }
 
     public int nextQuestionNo() {
@@ -176,7 +179,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         //正解・不正解にかかわらず、次の問題へ
         //次の問題をDBから呼び出し、セットする
-        if (Kaitousuu <= Shutudaisuu) {//出題数が既定の数へ達していない場合
+        if (Kaitousuu < Shutudaisuu+1) {//出題数が既定の数へ達していない場合
             setQuestion();
         } else {
             //DFLG、AFLGをそれぞれのlistに従い、DBを書き換える
