@@ -46,20 +46,24 @@ public class CorrectSampleActivity extends AppCompatActivity {
 //解説を取得
         for (int id = 1; id < 11; id++) {
 
-            String sql = "SELECT KAISETU FROM " + tableName + " WHERE _id = " + idOrder[id];
+            String sql = "SELECT QUESTION , KAISETU FROM " + tableName + " WHERE _id = " + idOrder[id];
 
 //SQL実行
             Cursor cursor = db.rawQuery(sql, null);
 
 //データ取得
             while (cursor.moveToNext()) {
-                int indexColumn = cursor.getColumnIndex("KAISETU");
+                int indexColumnQuestion = cursor.getColumnIndex("QUESTION");
+                int indexColumnAnswer = cursor.getColumnIndex("KAISETU");
                 StringBuilder sb = new StringBuilder();
                 sb.append("問題");
                 count++;
                 sb.append(count);
-                sb.append(": ");
-                sb.append(cursor.getString(indexColumn));
+                sb.append(": \r\n");
+                sb.append(cursor.getString(indexColumnQuestion));
+                sb.append("\r\n解説");
+                sb.append(": \r\n");
+                sb.append(cursor.getString(indexColumnAnswer));
 //解説文を解答順に配列に格納
                 text[count] = new String(sb);
             }
