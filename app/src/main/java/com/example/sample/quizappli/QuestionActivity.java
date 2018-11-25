@@ -45,7 +45,7 @@ public class QuestionActivity extends AppCompatActivity {
     private SoundPool mSoundPool;
     private int[] mSoundId = new int[2];//使う効果音の数だけ配列作成
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

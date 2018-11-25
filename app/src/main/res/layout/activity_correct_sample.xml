@@ -1,56 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:text=""
-        android:textSize="20sp" />
-
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="left|center_vertical"
-        >
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_nextkaisetu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:background="#000080"
-        android:textColor="#FFFFFF"
-        android:text="次の解説文を表示する"
-        android:onClick="onClick"/>
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true"
+            android:text=""
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/button_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:background="#ffa500"
-        android:textColor="#FFFFFF"
-        android:text="@string/result_view"
-        android:onClick="onClick"/>
 
-    <Button
-        android:id="@+id/button_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:background="#00bfff"
-        android:textColor="#FFFFFF"
-        android:text="@string/top_view"
-        android:onClick="onClick"/>
+        <Button
+            android:id="@+id/button_nextkaisetu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000080"
+            android:onClick="onClick"
+            android:text="次の解説文を表示する"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffa500"
+            android:onClick="onClick"
+            android:text="@string/result_view"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00bfff"
+            android:onClick="onClick"
+            android:text="@string/top_view"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>
